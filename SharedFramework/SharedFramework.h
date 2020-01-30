@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 //! Project version number for SharedFramework.
 FOUNDATION_EXPORT double SharedFrameworkVersionNumber;
