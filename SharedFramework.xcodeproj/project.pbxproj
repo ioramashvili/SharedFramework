@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D819046C23E74377000C97D6 /* KeychainItemAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = D819046A23E74377000C97D6 /* KeychainItemAccessibility.swift */; };
+		D819046D23E74377000C97D6 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D819046B23E74377000C97D6 /* KeychainWrapper.swift */; };
 		D8199A0E23E2CF12001C83FF /* SharedFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = D8199A0C23E2CF12001C83FF /* SharedFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D8199A1B23E2D7A1001C83FF /* RadioAccessTechnology.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8199A1923E2D7A1001C83FF /* RadioAccessTechnology.swift */; };
 		D8199A1C23E2D7A1001C83FF /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8199A1A23E2D7A1001C83FF /* Reachability.swift */; };
@@ -93,6 +95,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D819046A23E74377000C97D6 /* KeychainItemAccessibility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainItemAccessibility.swift; sourceTree = "<group>"; };
+		D819046B23E74377000C97D6 /* KeychainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
 		D8199A0923E2CF12001C83FF /* SharedFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SharedFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8199A0C23E2CF12001C83FF /* SharedFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedFramework.h; sourceTree = "<group>"; };
 		D8199A0D23E2CF12001C83FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -191,6 +195,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D819046923E7436A000C97D6 /* KeychainWrapper */ = {
+			isa = PBXGroup;
+			children = (
+				D819046B23E74377000C97D6 /* KeychainWrapper.swift */,
+				D819046A23E74377000C97D6 /* KeychainItemAccessibility.swift */,
+			);
+			path = KeychainWrapper;
+			sourceTree = "<group>";
+		};
 		D81999FF23E2CF12001C83FF = {
 			isa = PBXGroup;
 			children = (
@@ -210,6 +223,7 @@
 		D8199A0B23E2CF12001C83FF /* SharedFramework */ = {
 			isa = PBXGroup;
 			children = (
+				D819046923E7436A000C97D6 /* KeychainWrapper */,
 				D8199A9A23E2D895001C83FF /* Views */,
 				D8199A5E23E2D83F001C83FF /* Models */,
 				D8199A3B23E2D819001C83FF /* Extensions */,
@@ -471,6 +485,7 @@
 				D8199ABE23E2D8AD001C83FF /* AppCircularButton.swift in Sources */,
 				D8199AB923E2D8AD001C83FF /* GradientLayer.swift in Sources */,
 				D8199A8B23E2D866001C83FF /* AppSectionDataProvider.swift in Sources */,
+				D819046D23E74377000C97D6 /* KeychainWrapper.swift in Sources */,
 				D8199AAF23E2D8AD001C83FF /* AppGradientView.swift in Sources */,
 				D8199A5923E2D82C001C83FF /* Optional+Extension.swift in Sources */,
 				D8199A2123E2D7E7001C83FF /* PushViewControllerNotifiableNavigationController.swift in Sources */,
@@ -491,6 +506,7 @@
 				D8199ABC23E2D8AD001C83FF /* GradientViewProvider.swift in Sources */,
 				D8199A7E23E2D866001C83FF /* UIStoryboardInstantiatable.swift in Sources */,
 				D8199AB423E2D8AD001C83FF /* AppTrippleColorGradientView.swift in Sources */,
+				D819046C23E74377000C97D6 /* KeychainItemAccessibility.swift in Sources */,
 				D8199AB023E2D8AD001C83FF /* AppShadowTrippleColorGradientView.swift in Sources */,
 				D8199A1C23E2D7A1001C83FF /* Reachability.swift in Sources */,
 				D8199A1B23E2D7A1001C83FF /* RadioAccessTechnology.swift in Sources */,
