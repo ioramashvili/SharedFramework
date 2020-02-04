@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "SharedFramework"
-  spec.version      = "0.0.3"
+  spec.version      = "0.0.5"
   spec.summary      = "Shared components library written in swift"
 
   spec.description  = <<-DESC
