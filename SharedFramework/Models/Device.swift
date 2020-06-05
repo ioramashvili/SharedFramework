@@ -59,6 +59,8 @@ final public class Device {
         case "iPhone12,1":                              return .iPhone11
         case "iPhone12,3":                              return .iPhone11Pro
         case "iPhone12,5":                              return .iPhone11ProMax
+        case "iPhone12,8":                              return .iPhoneSE2
+
         case "iPad2,1", "iPad2,2", "iPad2,3", "iPad2,4":return .iPad2
         case "iPad3,1", "iPad3,2", "iPad3,3":           return .iPad3
         case "iPad3,4", "iPad3,5", "iPad3,6":           return .iPad4
@@ -76,8 +78,11 @@ final public class Device {
         case "iPad7,3", "iPad7,4":                      return .iPadPro10_5
         case "iPad8,1", "iPad8,2", "iPad8,3", "iPad8,4":return .iPadPro11
         case "iPad8,5", "iPad8,6", "iPad8,7", "iPad8,8":return .iPadPro12_9_3
+        case "iPad8,11", "iPad8,12":                    return .iPadPro12_9_4
+
         case "AppleTV5,3":                              return .appleTV
         case "AppleTV6,2":                              return .appleTV4K
+
         case "i386", "x86_64":                          return getDeviceName(for: ProcessInfo().environment["SIMULATOR_MODEL_IDENTIFIER"] ?? "")
         default:  return .unknown
         }
@@ -133,7 +138,8 @@ public extension Device {
                     .iPhone8,
                     .iPhoneX,
                     .iPhoneXs,
-                    .iPhone11
+                    .iPhone11,
+                    .iPhoneSE2
                 ],
                 .inch5_5: [
                     .iPhone6Plus,
@@ -142,7 +148,7 @@ public extension Device {
                     .iPhone8Plus,
                     .iPhoneXr,
                     .iPhoneXsMax,
-                    .iPhone11,
+                    .iPhone11Pro,
                     .iPhone11ProMax,
                 ],
                 .inchIpad: [
@@ -163,7 +169,8 @@ public extension Device {
                     .iPadPro12_9_2,
                     .iPadPro10_5,
                     .iPadPro11,
-                    .iPadPro12_9_3
+                    .iPadPro12_9_3,
+                    .iPadPro12_9_4
                 ]
             ]
         }
@@ -196,6 +203,7 @@ public extension Device {
         case iPhone11
         case iPhone11Pro
         case iPhone11ProMax
+        case iPhoneSE2
         
         case iPodTouch5
         case iPodTouch6
@@ -217,6 +225,7 @@ public extension Device {
         case iPadPro10_5
         case iPadPro11
         case iPadPro12_9_3
+        case iPadPro12_9_4
         
         case appleTV
         case appleTV4K
@@ -224,7 +233,7 @@ public extension Device {
         case simulator
         
         public var isHugeiPad: Bool {
-            let iPads: [Device.Name] = [.iPadPro12_9_1, .iPadPro12_9_2, .iPadPro12_9_3]
+            let iPads: [Device.Name] = [.iPadPro12_9_1, .iPadPro12_9_2, .iPadPro12_9_3, .iPadPro12_9_4]
             return iPads.contains(self)
         }
         
@@ -257,6 +266,7 @@ public extension Device {
                     .iPhone11,
                     .iPhone11Pro,
                     .iPhone11ProMax,
+                    .iPhoneSE2
                 ]
             case .iPod:
                 return [
@@ -281,7 +291,8 @@ public extension Device {
                     .iPadPro12_9_2,
                     .iPadPro10_5,
                     .iPadPro11,
-                    .iPadPro12_9_3
+                    .iPadPro12_9_3,
+                    .iPadPro12_9_4
                 ]
             case .unknown:
                 return [
@@ -292,16 +303,3 @@ public extension Device {
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
