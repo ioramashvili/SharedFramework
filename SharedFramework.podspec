@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "SharedFramework"
-  spec.version      = "0.0.6"
+  spec.version      = "0.0.7"
   spec.summary      = "Shared components library written in swift"
 
   spec.description  = <<-DESC
@@ -12,7 +12,7 @@ Pod::Spec.new do |spec|
   spec.license      = { :type => "MIT", :file => "LICENSE" }
   spec.author       = { "Shota Ioramashvili" => "shotaioramashvili@gmail.com" }
   
-  spec.ios.deployment_target = "9.0"
+  spec.ios.deployment_target = "13.0"
   spec.swift_version = "5.0"
 
   spec.source       = { :git => "https://github.com/ioramashvili/SharedFramework.git", :tag => "#{spec.version}" }
