@@ -1,6 +1,5 @@
-
 public protocol AppCellDataProvider: class, Identifierable {
-    
+
 }
 
 public extension AppCellDataProvider {

@@ -1,4 +1,3 @@
-
 public protocol AppCellRepresentable: class {
     static var nib: UINib { get }
     static var identifier: Identifierable { get }

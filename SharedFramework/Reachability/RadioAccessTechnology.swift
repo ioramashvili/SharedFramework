@@ -4,17 +4,17 @@ public let RadioAccessTechnologyStateDidChange = NSNotification.Name("StateDidCh
 
 public class RadioAccessTechnology {
     public static let shared = RadioAccessTechnology()
-    
+
     fileprivate let telephonyNetworkInfo = CTTelephonyNetworkInfo()
     fileprivate(set) var reachability: Reachability?
     public weak var delegate: RadioAccessTechnologyNotifierDelegate?
-    
+
     fileprivate init() {
         defer {
             NotificationCenter.default.addObserver(
                 self,
                 selector: #selector(radioAccessTechnologyDidChange),
-                name:.CTRadioAccessTechnologyDidChange,
+                name: Notification.Name.CTServiceRadioAccessTechnologyDidChange,
                 object: nil)
             NotificationCenter.default.addObserver(
                 self,
@@ -22,35 +22,41 @@ public class RadioAccessTechnology {
                 name: ReachabilityChangedNotification,
                 object: nil)
         }
-        
+
         reachability = Reachability()
         try? reachability?.startNotifier()
     }
-    
+
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
-    
+
     public fileprivate(set) var currentState: State = .unknown {
         didSet {
             guard currentState != oldValue else {return}
-            
+
             NotificationCenter.default.post(name: RadioAccessTechnologyStateDidChange, object: nil)
             delegate?.didChange(to: currentState)
         }
     }
-    
+
     @objc fileprivate func radioAccessTechnologyDidChange() {
         reachabilityChanged()
     }
-    
+
     @objc fileprivate func reachabilityChanged() {
         currentState = getCurrentStateByReachibility()
     }
-    
+
     fileprivate var currentStateOnWWAN: State {
-        guard let radioAccessTechnology = telephonyNetworkInfo.currentRadioAccessTechnology else {return .unknown}
+        guard let serviceCurrentRadioAccessTechnology = telephonyNetworkInfo.serviceCurrentRadioAccessTechnology else {
+            return .unknown
+        }
         
+        guard let radioAccessTechnology = serviceCurrentRadioAccessTechnology.values.first else {
+            return .unknown
+        }
+
         switch radioAccessTechnology {
         case CTRadioAccessTechnologyGPRS,
              CTRadioAccessTechnologyEdge,
@@ -66,10 +72,10 @@ public class RadioAccessTechnology {
         default: return .unknown
         }
     }
-    
+
     fileprivate func getCurrentStateByReachibility() -> State {
         guard let status = reachability?.currentReachabilityStatus else {return .unknown}
-        
+
         switch status {
         case .reachableViaWiFi: return .wifi
         case .reachableViaWWAN: return currentStateOnWWAN
@@ -87,7 +93,3 @@ extension RadioAccessTechnology {
 public protocol RadioAccessTechnologyNotifierDelegate: class {
     func didChange(to state: RadioAccessTechnology.State)
 }
-
-
-
-

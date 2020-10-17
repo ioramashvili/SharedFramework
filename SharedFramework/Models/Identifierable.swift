@@ -1,4 +1,3 @@
-
 public protocol Identifierable {
     var identifier: String { get }
 }

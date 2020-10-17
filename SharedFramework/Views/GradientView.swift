@@ -1,4 +1,3 @@
-
 public protocol GradientView: class {
     var color1: UIColor { get set }
     var color2: UIColor { get set }

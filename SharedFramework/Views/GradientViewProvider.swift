@@ -1,4 +1,3 @@
-
 public protocol GradientViewProvider {
     associatedtype GradientViewType where GradientViewType: CAGradientLayer
 }
@@ -12,4 +11,3 @@ public extension GradientViewProvider where Self: UIView {
         return layer as! Self.GradientViewType
     }
 }
-

@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D819046C23E74377000C97D6 /* KeychainItemAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = D819046A23E74377000C97D6 /* KeychainItemAccessibility.swift */; };
-		D819046D23E74377000C97D6 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D819046B23E74377000C97D6 /* KeychainWrapper.swift */; };
 		D8199A0E23E2CF12001C83FF /* SharedFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = D8199A0C23E2CF12001C83FF /* SharedFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D8199A1B23E2D7A1001C83FF /* RadioAccessTechnology.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8199A1923E2D7A1001C83FF /* RadioAccessTechnology.swift */; };
 		D8199A1C23E2D7A1001C83FF /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8199A1A23E2D7A1001C83FF /* Reachability.swift */; };
@@ -68,7 +66,6 @@
 		D8199A8F23E2D866001C83FF /* AppFontable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8199A7523E2D866001C83FF /* AppFontable.swift */; };
 		D8199A9023E2D866001C83FF /* Identifierable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8199A7623E2D866001C83FF /* Identifierable.swift */; };
 		D8199A9123E2D866001C83FF /* AppBiometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8199A7723E2D866001C83FF /* AppBiometry.swift */; };
-		D8199A9223E2D866001C83FF /* AppBiometryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8199A7823E2D866001C83FF /* AppBiometryType.swift */; };
 		D8199A9623E2D877001C83FF /* StoreReviewManagerKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8199A9323E2D877001C83FF /* StoreReviewManagerKey.swift */; };
 		D8199A9723E2D877001C83FF /* StoreReviewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8199A9423E2D877001C83FF /* StoreReviewManager.swift */; };
 		D8199A9823E2D877001C83FF /* StoreReviewManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8199A9523E2D877001C83FF /* StoreReviewManagerDelegate.swift */; };
@@ -110,8 +107,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		D819046A23E74377000C97D6 /* KeychainItemAccessibility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainItemAccessibility.swift; sourceTree = "<group>"; };
-		D819046B23E74377000C97D6 /* KeychainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
 		D8199A0923E2CF12001C83FF /* SharedFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SharedFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8199A0C23E2CF12001C83FF /* SharedFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedFramework.h; sourceTree = "<group>"; };
 		D8199A0D23E2CF12001C83FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -173,7 +168,6 @@
 		D8199A7523E2D866001C83FF /* AppFontable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppFontable.swift; sourceTree = "<group>"; };
 		D8199A7623E2D866001C83FF /* Identifierable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Identifierable.swift; sourceTree = "<group>"; };
 		D8199A7723E2D866001C83FF /* AppBiometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppBiometry.swift; sourceTree = "<group>"; };
-		D8199A7823E2D866001C83FF /* AppBiometryType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppBiometryType.swift; sourceTree = "<group>"; };
 		D8199A9323E2D877001C83FF /* StoreReviewManagerKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreReviewManagerKey.swift; sourceTree = "<group>"; };
 		D8199A9423E2D877001C83FF /* StoreReviewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreReviewManager.swift; sourceTree = "<group>"; };
 		D8199A9523E2D877001C83FF /* StoreReviewManagerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreReviewManagerDelegate.swift; sourceTree = "<group>"; };
@@ -224,15 +218,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D819046923E7436A000C97D6 /* KeychainWrapper */ = {
-			isa = PBXGroup;
-			children = (
-				D819046B23E74377000C97D6 /* KeychainWrapper.swift */,
-				D819046A23E74377000C97D6 /* KeychainItemAccessibility.swift */,
-			);
-			path = KeychainWrapper;
-			sourceTree = "<group>";
-		};
 		D81999FF23E2CF12001C83FF = {
 			isa = PBXGroup;
 			children = (
@@ -255,7 +240,6 @@
 			isa = PBXGroup;
 			children = (
 				D864410E23E95FC10010878C /* DependencyContainer */,
-				D819046923E7436A000C97D6 /* KeychainWrapper */,
 				D8199A9A23E2D895001C83FF /* Views */,
 				D8199A5E23E2D83F001C83FF /* Models */,
 				D8199A3B23E2D819001C83FF /* Extensions */,
@@ -337,7 +321,6 @@
 				D8199A9323E2D877001C83FF /* StoreReviewManagerKey.swift */,
 				D8199A7723E2D866001C83FF /* AppBiometry.swift */,
 				D8199A7023E2D866001C83FF /* AppBiometryDataSourse.swift */,
-				D8199A7823E2D866001C83FF /* AppBiometryType.swift */,
 				D8199A6223E2D865001C83FF /* AppCellDataProvider.swift */,
 				D8199A6723E2D865001C83FF /* AppCellDelegate.swift */,
 				D8199A6C23E2D865001C83FF /* AppCellRepresentable.swift */,
@@ -468,7 +451,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1130;
-				LastUpgradeCheck = 1130;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = shota.io;
 				TargetAttributes = {
 					D8199A0823E2CF12001C83FF = {
@@ -559,14 +542,12 @@
 				D8199A4F23E2D82C001C83FF /* UIViewController+Extension.swift in Sources */,
 				D8199A7F23E2D866001C83FF /* Dynamic.swift in Sources */,
 				D8199A7B23E2D866001C83FF /* StaticHeightDataProvider.swift in Sources */,
-				D8199A9223E2D866001C83FF /* AppBiometryType.swift in Sources */,
 				D8199A5B23E2D82C001C83FF /* UIFont+Extension.swift in Sources */,
 				D8199A9623E2D877001C83FF /* StoreReviewManagerKey.swift in Sources */,
 				D8199A8923E2D866001C83FF /* SegueHandlerType.swift in Sources */,
 				D8199ABE23E2D8AD001C83FF /* AppCircularButton.swift in Sources */,
 				D8199AB923E2D8AD001C83FF /* GradientLayer.swift in Sources */,
 				D8199A8B23E2D866001C83FF /* AppSectionDataProvider.swift in Sources */,
-				D819046D23E74377000C97D6 /* KeychainWrapper.swift in Sources */,
 				D8199AAF23E2D8AD001C83FF /* AppGradientView.swift in Sources */,
 				D8199A5923E2D82C001C83FF /* Optional+Extension.swift in Sources */,
 				D8199A2123E2D7E7001C83FF /* PushViewControllerNotifiableNavigationController.swift in Sources */,
@@ -588,7 +569,6 @@
 				D8199ABC23E2D8AD001C83FF /* GradientViewProvider.swift in Sources */,
 				D8199A7E23E2D866001C83FF /* UIStoryboardInstantiatable.swift in Sources */,
 				D8199AB423E2D8AD001C83FF /* AppTrippleColorGradientView.swift in Sources */,
-				D819046C23E74377000C97D6 /* KeychainItemAccessibility.swift in Sources */,
 				D8199AB023E2D8AD001C83FF /* AppShadowTrippleColorGradientView.swift in Sources */,
 				D8199A1C23E2D7A1001C83FF /* Reachability.swift in Sources */,
 				D8199A1B23E2D7A1001C83FF /* RadioAccessTechnology.swift in Sources */,
@@ -656,6 +636,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -681,7 +662,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -719,6 +700,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -738,7 +720,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -763,7 +745,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = SharedFramework/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -792,7 +774,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = SharedFramework/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

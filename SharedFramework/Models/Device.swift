@@ -1,4 +1,3 @@
-
 public protocol DeviceDataSourse: class {
     var fontMultipliers: [Device.ScreenSize: CGFloat] { get }
 }
@@ -6,15 +5,15 @@ public protocol DeviceDataSourse: class {
 final public class Device {
     public static let shared = Device()
     public weak var dataSourse: DeviceDataSourse?
-    
+
     private init() { }
-    
+
     public var current: (family: Device.Family, name: Device.Name) {
         var systemInfo = utsname()
         uname(&systemInfo)
         let machineMirror = Mirror(reflecting: systemInfo.machine)
         let identifier = machineMirror.children.reduce("") { identifier, element in
-            guard let value = element.value as? Int8 , value != 0 else {
+            guard let value = element.value as? Int8, value != 0 else {
                 return identifier
             }
             return identifier + String(UnicodeScalar(UInt8(value)))
@@ -22,18 +21,16 @@ final public class Device {
 
         let currentDeviceName = getDeviceName(for: identifier)
         let currentDeviceFamily = getDeviceFamily(for: currentDeviceName)
-        
+
         return (currentDeviceFamily, currentDeviceName)
     }
-    
+
     private func getDeviceFamily(for name: Device.Name) -> Device.Family {
-        if name.rawValue.contains(Device.Family.iPhone.rawValue) { return .iPhone }
-        else if name.rawValue.contains(Device.Family.iPad.rawValue) { return .iPad }
-        else if name.rawValue.contains(Device.Family.iPod.rawValue) { return .iPod }
-        
+        if name.rawValue.contains(Device.Family.iPhone.rawValue) { return .iPhone } else if name.rawValue.contains(Device.Family.iPad.rawValue) { return .iPad } else if name.rawValue.contains(Device.Family.iPod.rawValue) { return .iPod }
+
         return .unknown
     }
-    
+
     private func getDeviceName(for identifier: String) -> Name {
         switch identifier {
         case "iPod5,1":                                 return .iPodTouch5
@@ -87,15 +84,15 @@ final public class Device {
         default:  return .unknown
         }
     }
-    
+
     public func normalized(fontSize: CGFloat) -> CGFloat {
         guard
             let dataSourse = dataSourse,
             let multiplier = dataSourse.fontMultipliers[Device.shared.current.name.screenSize] else {return fontSize}
-        
+
         return fontSize * multiplier
     }
-    
+
     public func normalized(font: UIFont) -> UIFont {
         let normalizedFontSize = normalized(fontSize: font.pointSize)
         return font.withSize(normalizedFontSize)
@@ -108,19 +105,19 @@ public extension Device {
         case iPhone
         case iPad
         case iPod
-        
+
         public var isiPad: Bool {
             return self == .iPad
         }
     }
-    
+
     enum ScreenSize {
         case unknown
         case inch4
         case inch4_7
         case inch5_5
         case inchIpad
-        
+
         public static var allNamesByScreenSize: [ScreenSize: [Name]] {
             return [
                 .inch4: [
@@ -149,7 +146,7 @@ public extension Device {
                     .iPhoneXr,
                     .iPhoneXsMax,
                     .iPhone11Pro,
-                    .iPhone11ProMax,
+                    .iPhone11ProMax
                 ],
                 .inchIpad: [
                     .appleTV,
@@ -174,12 +171,12 @@ public extension Device {
                 ]
             ]
         }
-        
+
         public var names: [Name] {
             return ScreenSize.allNamesByScreenSize[self] ?? []
         }
     }
-    
+
     enum Name: String {
         case unknown
         case iPhone4
@@ -204,10 +201,10 @@ public extension Device {
         case iPhone11Pro
         case iPhone11ProMax
         case iPhoneSE2
-        
+
         case iPodTouch5
         case iPodTouch6
-        
+
         case iPad2
         case iPad3
         case iPad4
@@ -226,21 +223,21 @@ public extension Device {
         case iPadPro11
         case iPadPro12_9_3
         case iPadPro12_9_4
-        
+
         case appleTV
         case appleTV4K
-        
+
         case simulator
-        
+
         public var isHugeiPad: Bool {
             let iPads: [Device.Name] = [.iPadPro12_9_1, .iPadPro12_9_2, .iPadPro12_9_3, .iPadPro12_9_4]
             return iPads.contains(self)
         }
-        
+
         public var screenSize: ScreenSize {
             return ScreenSize.allNamesByScreenSize.first(where: { $0.value.contains(self) })?.key ?? .unknown
         }
-        
+
         public func names(by family: Family) -> [Name] {
             switch family {
             case .iPhone:

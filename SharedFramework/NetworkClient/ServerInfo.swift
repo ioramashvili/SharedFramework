@@ -1,4 +1,3 @@
-
 public protocol ServerInfo: class {
     static var scheme: String { get }
     static var host: String { get }
@@ -14,17 +13,17 @@ extension ServerInfo {
         components.path   = path
         return components.url!
     }
-    
+
     public static var cacheRootFolderName: String {
         return String(describing: self)
     }
-    
+
     public static func clearCache() {
         let folderPath =  documentDirectory.appendingPathComponent("\(cacheRootFolderName)")
-        
+
         try? FileManager.default.removeItem(at: folderPath)
     }
-    
+
     public static var documentDirectory: URL {
         return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     }

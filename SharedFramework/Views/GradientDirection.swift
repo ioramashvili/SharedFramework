@@ -1,4 +1,3 @@
-
 public typealias GradientType = (x: CGPoint, y: CGPoint)
 
 public enum GradientDirection: String {
@@ -10,7 +9,7 @@ public enum GradientDirection: String {
     case bottomRightTopLeft
     case topRightBottomLeft
     case bottomLeftTopRight
-    
+
     public var gradientType: GradientType {
         switch self {
         case .leftRight:

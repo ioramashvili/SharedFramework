@@ -1,4 +1,3 @@
-
 public extension UILabel {
     @IBInspectable
     var adjustFontToRealIPhoneSize: Bool {
@@ -54,11 +53,3 @@ public extension UITextView {
         }
     }
 }
-
-
-
-
-
-
-
-

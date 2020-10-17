@@ -1,13 +1,12 @@
-
 extension AppFontable where Self: RawRepresentable, Self.RawValue == String {
     public var name: String {
         return rawValue
     }
-    
+
     public func with(size: CGFloat) -> UIFont {
         return UIFont(name: name, size: size)!
     }
-    
+
     public func withAdjustedToRealIPhone(size: CGFloat) -> UIFont {
         let normalizedSize = Device.shared.normalized(fontSize: size)
         return UIFont(name: name, size: normalizedSize)!
@@ -29,7 +28,6 @@ public func printFontNames() {
     }
 }
 
-
 // Example
 //enum AppFont: String, AppFontable {
 //    case base = "MyGeocell-Regular"
@@ -40,4 +38,3 @@ public func printFontNames() {
 //    case bpgArial2010 = "BPGArial2010"
 //    case bpgGEL = "!BPGGEL"
 //}
-

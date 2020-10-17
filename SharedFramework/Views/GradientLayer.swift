@@ -1,5 +1,4 @@
-
-open class GradientLayer : CAGradientLayer {
+open class GradientLayer: CAGradientLayer {
     var direction: GradientDirection? {
         didSet {
             startPoint = direction?.gradientType.x ?? .zero

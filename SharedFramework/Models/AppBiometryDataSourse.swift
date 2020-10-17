@@ -1,4 +1,5 @@
+import LocalAuthentication
 
 public protocol AppBiometryDataSourse: class {
-    var reasonStrings: [AppBiometry.BiometryType: String] { get }
+    var reasonStrings: [LABiometryType: String] { get }
 }

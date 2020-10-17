@@ -1,4 +1,3 @@
-
 extension URLRequest {
     mutating func setHeader(values: HeaderValues?) {
         values?.forEach {

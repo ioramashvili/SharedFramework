@@ -5,7 +5,7 @@ enum ExampleAppTableViewCellType: Int, Identifierable {
     case large
     case medium
     case small
-    
+
     public var identifier: String {
         return "cell\(rawValue)"
     }
@@ -16,7 +16,7 @@ enum ExampleAppCollectionViewCellType: Int, Identifierable {
     case large
     case medium
     case small
-    
+
     public var identifier: String {
         return "cell\(rawValue)"
     }

@@ -1,4 +1,3 @@
-
 public protocol UIStoryboardInstantiatable {
     func instantiate<T: UIViewController>(controller: T.Type) -> T?
     func instantiateInitial<T: UIViewController>(controller: T.Type) -> T?
@@ -17,7 +16,7 @@ public extension UIStoryboardInstantiatable where Self: UIStoryboardRepresentabl
     func instantiate<T: UIViewController>(controller: T.Type) -> T? {
         return storyboard.instantiate(controller: T.self)
     }
-    
+
     func instantiateInitial<T: UIViewController>(controller: T.Type) -> T? {
         return storyboard.instantiateInitial(controller: T.self)
     }
@@ -28,12 +27,9 @@ public extension UIStoryboardInstantiatable where Self: UIStoryboard {
     func instantiate<T: UIViewController>(controller: T.Type) -> T? {
         return instantiateViewController(withIdentifier: T.className) as? T
     }
-    
+
     // ვიღებთ სთორიბორდის საწყის ვიუკონტროლერს კონკრეტული ტიპზე
     func instantiateInitial<T: UIViewController>(controller: T.Type) -> T? {
         return instantiateInitialViewController() as? T
     }
 }
-
-
-

@@ -1,4 +1,3 @@
-
 public struct HTTPHeaderValue {
     public static let applicationJson = "application/json; charset=utf-8"
     public static let applicationJavascript = "application/javascript; charset=utf-8"

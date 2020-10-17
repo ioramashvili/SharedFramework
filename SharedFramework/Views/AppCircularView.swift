@@ -1,4 +1,3 @@
-
 @IBDesignable
 open class AppCircularView: UIView, CircularView {
     @IBInspectable open var hasSquareBorderRadius: Bool = false {
@@ -6,41 +5,41 @@ open class AppCircularView: UIView, CircularView {
             update()
         }
     }
-    
+
     @IBInspectable open var cornerRadius: CGFloat = 0 {
         didSet {
             update()
         }
     }
-    
+
     @IBInspectable open var borderWidth: CGFloat = 0 {
         didSet {
             update()
         }
     }
-    
+
     @IBInspectable open var borderColor: UIColor = .clear {
         didSet {
             update()
         }
     }
-    
+
     public var normalizedCornerRadius: CGFloat {
         return hasSquareBorderRadius ? bounds.height / 2 : cornerRadius
     }
-    
+
     public lazy var borderLayer: CAShapeLayer = {
         let borderLayer = CAShapeLayer()
         self.layer.addSublayer(borderLayer)
         return borderLayer
     }()
-    
+
     public lazy var maskLayer: CAShapeLayer = { [unowned self] in
         let mask = makeMaskLayer(path: makeMaskLayerPath())
         self.layer.mask = mask
         return mask
     }()
-    
+
     open func update() {
         setupCornerRadius()
     }
@@ -50,4 +49,3 @@ open class AppCircularView: UIView, CircularView {
         update()
     }
 }
-

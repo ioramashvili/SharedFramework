@@ -1,4 +1,3 @@
-
 public typealias PushViewControllerNotifiableComplition = () -> Void
 
 public protocol PushViewControllerNotifiable: class {
@@ -12,21 +11,21 @@ extension PushViewControllerNotifiable {
     public func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         (viewController as? PushViewControllerNotifiableViewController)?.fireWillShowComplitionAndClear()
     }
-    
+
     public func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
         (viewController as? PushViewControllerNotifiableViewController)?.fireDidShowComplitionAndClear()
     }
-    
+
     func registerComplitions(willShowComplition: PushViewControllerNotifiableComplition?, didShowComplition: PushViewControllerNotifiableComplition?) {
         self.willShowComplition = willShowComplition
         self.didShowComplition = didShowComplition
     }
-    
+
     func fireWillShowComplitionAndClear() {
         willShowComplition?()
         willShowComplition = nil
     }
-    
+
     func fireDidShowComplitionAndClear() {
         didShowComplition?()
         didShowComplition = nil
@@ -54,7 +53,3 @@ open class PushViewControllerNotifiableCollectionViewController: UICollectionVie
 //}, didShow: {
 //    print("did show complition \(self.navigationController!.viewControllers.count)")
 //}, animated: true)
-
-
-
-

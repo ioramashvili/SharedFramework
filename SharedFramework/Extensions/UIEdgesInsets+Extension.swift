@@ -1,4 +1,3 @@
-
 public func +(left: UIEdgeInsets, right: UIEdgeInsets) -> UIEdgeInsets {
     return UIEdgeInsets(
         top: left.top + right.top,

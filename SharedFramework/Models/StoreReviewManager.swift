@@ -4,11 +4,11 @@ import StoreKit
 
 public class StoreReviewManager {
     private init() { }
-    
+
     static let step = 1
     public static let shared = StoreReviewManager()
     public weak var delegate: StoreReviewManagerDelegate?
-    
+
     fileprivate(set) var count: Int {
         get {
             return UserDefaults.standard.integer(forKey: Key.count.value)
@@ -20,19 +20,19 @@ public class StoreReviewManager {
             }
         }
     }
-    
+
     private func requestReview() {
         if #available(iOS 10.3, *) {
             SKStoreReviewController.requestReview()
         }
     }
-    
+
     private func requestReviewIfNeeded() {
         if let delegate = delegate, delegate.cycles.contains(count) {
             requestReview()
         }
     }
-    
+
     public func increaseTargetCount() {
         count += StoreReviewManager.step
     }
@@ -61,4 +61,3 @@ public class StoreReviewManager {
 //        return [1, 100, 400]
 //    }
 //}
-
