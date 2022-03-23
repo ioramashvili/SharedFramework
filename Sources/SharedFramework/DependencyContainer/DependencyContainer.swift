@@ -3,15 +3,12 @@ import Foundation
 public class DependencyContainer {
     private var modules: [String: Module] = [:]
 
-    private init() {}
+    public init() {}
+
     deinit { modules.removeAll() }
 }
 
-internal extension DependencyContainer {
-    func add(module: Module) {
-        modules[module.name] = module
-    }
-
+extension DependencyContainer {
     func resolve<T>(for name: String? = nil) -> T {
         let name = name ?? String(describing: T.self)
 
@@ -36,9 +33,14 @@ public extension DependencyContainer {
         add(module: module())
     }
 
+    @discardableResult
     func register(@ModuleBuilder _ modules: () -> [Module]) -> Self {
         modules().forEach { add(module: $0) }
         return self
+    }
+    
+    func add(module: Module) {
+        modules[module.name] = module
     }
 
     func build() {
