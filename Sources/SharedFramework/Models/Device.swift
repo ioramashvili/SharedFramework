@@ -1,16 +1,11 @@
 import UIKit
 
-public protocol DeviceDataSourse: AnyObject {
-    var fontMultipliers: [Device.ScreenSize: CGFloat] { get }
-}
-
 final public class Device {
     public static let shared = Device()
-    public weak var dataSourse: DeviceDataSourse?
-    
+
     private init() { }
     
-    public var current: (family: Device.Family, name: Device.Name) {
+    public var current: Device.Name {
         var systemInfo = utsname()
         uname(&systemInfo)
         let machineMirror = Mirror(reflecting: systemInfo.machine)
@@ -21,18 +16,7 @@ final public class Device {
             return identifier + String(UnicodeScalar(UInt8(value)))
         }
 
-        let currentDeviceName = getDeviceName(for: identifier)
-        let currentDeviceFamily = getDeviceFamily(for: currentDeviceName)
-        
-        return (currentDeviceFamily, currentDeviceName)
-    }
-    
-    private func getDeviceFamily(for name: Device.Name) -> Device.Family {
-        if name.rawValue.contains(Device.Family.iPhone.rawValue) { return .iPhone }
-        else if name.rawValue.contains(Device.Family.iPad.rawValue) { return .iPad }
-        else if name.rawValue.contains(Device.Family.iPod.rawValue) { return .iPod }
-        
-        return .unknown
+        return getDeviceName(for: identifier)
     }
     
     private func getDeviceName(for identifier: String) -> Name {
@@ -69,6 +53,11 @@ final public class Device {
         case "iPhone14,5":                                     return .iPhone13
         case "iPhone14,2":                                     return .iPhone13Pro
         case "iPhone14,3":                                     return .iPhone13ProMax
+        case "iPhone14,7":                                     return .iPhone14
+        case "iPhone14,8":                                     return .iPhone14Plus
+        case "iPhone15,2":                                     return .iPhone14Pro
+        case "iPhone15,3":                                     return .iPhone14ProMax
+        case "iPhone14,6":                                     return .iPhoneSE_3
         case "iPad2,1", "iPad2,2", "iPad2,3", "iPad2,4":       return .iPad2
         case "iPad3,1", "iPad3,2", "iPad3,3":                  return .iPad3
         case "iPad3,4", "iPad3,5", "iPad3,6":                  return .iPad4
@@ -90,6 +79,8 @@ final public class Device {
         case "iPad7,1", "iPad7,2":                             return .iPadPro12_9_2
         case "iPad7,3", "iPad7,4":                             return .iPadPro10_5
         case "iPad8,1", "iPad8,2", "iPad8,3", "iPad8,4":       return .iPadPro11
+        case "iPad8,9", "iPad8,10":                            return .iPadPro112
+        case "iPad13,4", "iPad13,5", "iPad13,6", "iPad13,7":   return .iPadPro113
         case "iPad8,5", "iPad8,6", "iPad8,7", "iPad8,8":       return .iPadPro12_9_3
         case "iPad8,11", "iPad8,12":                           return .iPadPro12_9_4
         case "iPad13,8", "iPad13,9", "iPad13,10", "iPad13,11": return .iPadPro12_9_5
@@ -99,248 +90,81 @@ final public class Device {
         default:                                               return .unknown
         }
     }
-    
-    public func normalized(fontSize: CGFloat) -> CGFloat {
-        guard
-            let dataSourse = dataSourse,
-            let multiplier = dataSourse.fontMultipliers[Device.shared.current.name.screenSize] else {return fontSize}
-        
-        return fontSize * multiplier
-    }
-    
-    public func normalized(font: UIFont) -> UIFont {
-        let normalizedFontSize = normalized(fontSize: font.pointSize)
-        return font.withSize(normalizedFontSize)
-    }
 }
 
 public extension Device {
-    enum Family: String {
-        case unknown
-        case iPhone
-        case iPad
-        case iPod
-        
-        public var isiPad: Bool {
-            return self == .iPad
-        }
-    }
-    
-    enum ScreenSize {
-        case unknown
-        case inch4
-        case inch4_7
-        case inch5_5
-        case inchIpad
-        
-        public static var allNamesByScreenSize: [ScreenSize: [Name]] {
-            return [
-                .inch4: [
-                    .iPhone4,
-                    .iPhone4s,
-                    .iPhone5,
-                    .iPhone5c,
-                    .iPhone5s,
-                    .iPhoneSE
-                ],
-                .inch4_7: [
-                    .iPhone6,
-                    .iPhone6s,
-                    .iPhone7,
-                    .iPhone8,
-                    .iPhoneX,
-                    .iPhoneXs,
-                    .iPhone11,
-                    .iPhoneSE_2
-                ],
-                .inch5_5: [
-                    .iPhone6Plus,
-                    .iPhone6sPlus,
-                    .iPhone7Plus,
-                    .iPhone8Plus,
-                    .iPhoneXr,
-                    .iPhoneXsMax,
-                    .iPhone11,
-                    .iPhone11ProMax,
-                    .iPhone12mini,
-                    .iPhone12,
-                    .iPhone12Pro,
-                    .iPhone12ProMax,
-                    .iPhone13mini,
-                    .iPhone13,
-                    .iPhone13Pro,
-                    .iPhone13ProMax
-                ],
-                .inchIpad: [
-                    .appleTV,
-                    .iPad2,
-                    .iPad3,
-                    .iPad4,
-                    .iPadAir,
-                    .iPadAir2,
-                    .iPad5,
-                    .iPad6,
-                    .iPad7,
-                    .iPad8,
-                    .iPad9,
-                    .iPadMini,
-                    .iPadMini2,
-                    .iPadMini3,
-                    .iPadMini4,
-                    .iPadMini5,
-                    .iPadMini6,
-                    .iPadPro9_7,
-                    .iPadPro12_9_1,
-                    .iPadPro12_9_2,
-                    .iPadPro10_5,
-                    .iPadPro11,
-                    .iPadPro12_9_3,
-                    .iPadPro12_9_4
-                ]
-            ]
-        }
-        
-        public var names: [Name] {
-            return ScreenSize.allNamesByScreenSize[self] ?? []
-        }
-    }
-    
     enum Name: String {
         case unknown
-        case iPhone4
-        case iPhone4s
-        case iPhone5
-        case iPhone5c
-        case iPhone5s
-        case iPhone6
-        case iPhone6Plus
-        case iPhone6s
-        case iPhone6sPlus
-        case iPhone7
-        case iPhone7Plus
-        case iPhoneSE
-        case iPhone8
-        case iPhone8Plus
-        case iPhoneX
-        case iPhoneXs
-        case iPhoneXsMax
-        case iPhoneXr
-        case iPhone11
-        case iPhone11Pro
-        case iPhone11ProMax
-        case iPhoneSE_2
-        case iPhone12mini
-        case iPhone12
-        case iPhone12Pro
-        case iPhone12ProMax
-        case iPhone13mini
-        case iPhone13
-        case iPhone13Pro
-        case iPhone13ProMax
+        case iPhone4        = "iPhone 4"
+        case iPhone4s       = "iPhone 4s"
+        case iPhone5        = "iPhone 5"
+        case iPhone5c       = "iPhone 5c"
+        case iPhone5s       = "iPhone 5s"
+        case iPhone6        = "iPhone 6"
+        case iPhone6Plus    = "iPhone 6 Plus"
+        case iPhone6s       = "iPhone 6s"
+        case iPhone6sPlus   = "iPhone 6s Plus"
+        case iPhone7        = "iPhone 7"
+        case iPhone7Plus    = "iPhone 7 Plus"
+        case iPhone8        = "iPhone 8"
+        case iPhone8Plus    = "iPhone 8 Plus"
+        case iPhoneX        = "iPhone X"
+        case iPhoneXs       = "iPhone XS"
+        case iPhoneXsMax    = "iPhone XS Plus"
+        case iPhoneXr       = "iPhone XR"
+        case iPhone11       = "iPhone 11"
+        case iPhone11Pro    = "iPhone 11 Pro"
+        case iPhone11ProMax = "iPhone 11 Pro Max"
+        case iPhone12mini   = "iPhone 12 mini"
+        case iPhone12       = "iPhone 12"
+        case iPhone12Pro    = "iPhone 12 Pro"
+        case iPhone12ProMax = "iPhone 12 Pro Max"
+        case iPhone13mini   = "iPhone 13 mini"
+        case iPhone13       = "iPhone 13"
+        case iPhone13Pro    = "iPhone 13 Pro"
+        case iPhone13ProMax = "iPhone 13 Pro Max"
+        case iPhone14       = "iPhone 14"
+        case iPhone14Plus   = "iPhone 14 Plus"
+        case iPhone14Pro    = "iPhone 14 Pro"
+        case iPhone14ProMax = "iPhone 14 Pro Max"
         
-        case iPodTouch5
-        case iPodTouch6
+        case iPhoneSE       = "iPhone SE"
+        case iPhoneSE_2     = "iPhone SE (2nd generation)"
+        case iPhoneSE_3     = "iPhone SE (3rd generation)"
         
-        case iPad2
-        case iPad3
-        case iPad4
-        case iPadAir
-        case iPadAir2
-        case iPad5
-        case iPad6
-        case iPad7
-        case iPad8
-        case iPad9
-        case iPadMini
-        case iPadMini2
-        case iPadMini3
-        case iPadMini4
-        case iPadMini5
-        case iPadMini6
-        case iPadPro9_7
-        case iPadPro12_9_1
-        case iPadPro12_9_2
-        case iPadPro10_5
-        case iPadPro11
-        case iPadPro12_9_3
-        case iPadPro12_9_4
-        case iPadPro12_9_5
+        case iPodTouch5     = "iPod touch (5th generation)"
+        case iPodTouch6     = "iPod touch (6th generation)"
         
-        case appleTV
-        case appleTV4K
+        case iPad2          = "iPad 2"
+        case iPad3          = "iPad (3rd generation)"
+        case iPad4          = "iPad (4th generation)"
+        case iPad5          = "iPad (5th generation)"
+        case iPad6          = "iPad (6th generation)"
+        case iPad7          = "iPad (7th generation)"
+        case iPad8          = "iPad (8th generation)"
+        case iPad9          = "iPad (9th generation)"
+        case iPadAir        = "iPad Air"
+        case iPadAir2       = "iPad Air 2"
+        case iPadMini       = "iPad mini"
+        case iPadMini2      = "iPad mini 2"
+        case iPadMini3      = "iPad mini 3"
+        case iPadMini4      = "iPad mini 4"
+        case iPadMini5      = "iPad mini 5"
+        case iPadMini6      = "iPad mini 6"
+        case iPadPro9_7     = "iPad Pro (9.7-inch)"
+        case iPadPro10_5    = "iPad Pro (10.5-inch)"
+        case iPadPro11      = "iPad Pro (11-inch) (1st generation)"
+        case iPadPro112     = "iPad Pro (11-inch) (2nd generation)"
+        case iPadPro113     = "iPad Pro (11-inch) (3rd generation)"
+        case iPadPro12_9_1  = "iPad Pro (12.9-inch) (1st generation)"
+        case iPadPro12_9_2  = "iPad Pro (12.9-inch) (2nd generation)"
+        case iPadPro12_9_3  = "iPad Pro (12.9-inch) (3rd generation)"
+        case iPadPro12_9_4  = "iPad Pro (12.9-inch) (4th generation)"
+        case iPadPro12_9_5  = "iPad Pro (12.9-inch) (5th generation)"
+        
+        case appleTV        = "Apple TV"
+        case appleTV4K      = "Apple TV 4K"
         
         case simulator
-        
-        public var isHugeiPad: Bool {
-            let iPads: [Device.Name] = [.iPadPro12_9_1, .iPadPro12_9_2, .iPadPro12_9_3, .iPadPro12_9_4, .iPadPro12_9_5]
-            return iPads.contains(self)
-        }
-        
-        public var screenSize: ScreenSize {
-            return ScreenSize.allNamesByScreenSize.first(where: { $0.value.contains(self) })?.key ?? .unknown
-        }
-        
-        public func names(by family: Family) -> [Name] {
-            switch family {
-            case .iPhone:
-                return [
-                    .iPhone4,
-                    .iPhone4s,
-                    .iPhone5,
-                    .iPhone5c,
-                    .iPhone5s,
-                    .iPhone6,
-                    .iPhone6Plus,
-                    .iPhone6s,
-                    .iPhone6sPlus,
-                    .iPhone7,
-                    .iPhone7Plus,
-                    .iPhoneSE,
-                    .iPhone8,
-                    .iPhone8Plus,
-                    .iPhoneX,
-                    .iPhoneXr,
-                    .iPhoneXs,
-                    .iPhoneXsMax,
-                    .iPhone11,
-                    .iPhone11Pro,
-                    .iPhone11ProMax
-                ]
-            case .iPod:
-                return [
-                    .iPodTouch5,
-                    .iPodTouch6
-                ]
-            case .iPad:
-                return [
-                    .iPad2,
-                    .iPad3,
-                    .iPad4,
-                    .iPadAir,
-                    .iPadAir2,
-                    .iPad5,
-                    .iPad6,
-                    .iPadMini,
-                    .iPadMini2,
-                    .iPadMini3,
-                    .iPadMini4,
-                    .iPadMini5,
-                    .iPadMini6,
-                    .iPadPro9_7,
-                    .iPadPro12_9_1,
-                    .iPadPro12_9_2,
-                    .iPadPro10_5,
-                    .iPadPro11,
-                    .iPadPro12_9_3,
-                    .iPadPro12_9_4,
-                    .iPadPro12_9_5
-                ]
-            case .unknown:
-                return [
-                    .appleTV,
-                    .simulator
-                ]
-            }
-        }
     }
 }

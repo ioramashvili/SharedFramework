@@ -21,11 +21,11 @@ extension UITableView: UITableViewDequauable {
         dequeueReusableCell(withIdentifier: dataProvider.identifier) as! AppTableViewCell
     }
 
-    open func dequeueReusable<T: AppTableViewCell>(cell: T.Type, for indexPath: IndexPath) -> T {
+    public func dequeueReusable<T: AppTableViewCell>(cell: T.Type, for indexPath: IndexPath) -> T {
         dequeueReusableCell(withIdentifier: T.identifierValue, for: indexPath) as! T
     }
 
-    open func dequeueReusable<T: AppTableViewCell>(cell: T.Type) -> T? {
+    public func dequeueReusable<T: AppTableViewCell>(cell: T.Type) -> T? {
         dequeueReusableCell(withIdentifier: T.identifierValue) as? T
     }
 }

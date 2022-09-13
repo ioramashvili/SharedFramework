@@ -27,7 +27,7 @@ extension UICollectionView: UICollectionViewDequauable {
         dequeueReusableCell(withReuseIdentifier: dataProvider.identifier, for: indexPath) as! AppCollectionViewCell
     }
 
-    open func dequeueReusable<T: AppCollectionViewCell>(cell: T.Type, for indexPath: IndexPath) -> T {
+    public func dequeueReusable<T: AppCollectionViewCell>(cell: T.Type, for indexPath: IndexPath) -> T {
         dequeueReusableCell(withReuseIdentifier: T.identifierValue, for: indexPath) as! T
     }
 
@@ -35,7 +35,7 @@ extension UICollectionView: UICollectionViewDequauable {
         dequeueReusableSupplementaryView(ofKind: dataProvider.kind.value, withReuseIdentifier: dataProvider.identifier, for: indexPath) as! AppCollectionReusableView
     }
 
-    open func dequeueReusableSupplementary<T: AppCollectionReusableView>(view: T.Type, kind: AppSupplementaryKind, for indexPath: IndexPath) -> T {
+    public func dequeueReusableSupplementary<T: AppCollectionReusableView>(view: T.Type, kind: AppSupplementaryKind, for indexPath: IndexPath) -> T {
         dequeueReusableSupplementaryView(ofKind: kind.value, withReuseIdentifier: T.identifierValue, for: indexPath) as! T
     }
 }
