@@ -53,13 +53,7 @@ extension AppTableViewCell {
 
     @discardableResult
     public class func height(for dataProvider: StaticHeightDataProvider, in tableView: UITableView, tableViewWidth: CGFloat?) -> CGFloat {
-        if dataProvider.isHeightSet {
-            return dataProvider.height
-        }
-
-        dataProvider.height = height(for: dataProvider as AppCellDataProvider, in: tableView, tableViewWidth: tableViewWidth)
-
-        return dataProvider.height
+        dataProvider.height
     }
 
     @discardableResult
