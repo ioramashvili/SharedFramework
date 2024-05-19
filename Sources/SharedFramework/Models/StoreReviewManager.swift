@@ -37,27 +37,3 @@ public class StoreReviewManager {
         count += StoreReviewManager.step
     }
 }
-
-//class AppDelegate: UIResponder, UIApplicationDelegate {
-//
-//    var window: UIWindow?
-//
-//    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-//
-//        // დელეგატის დასეტვა
-//        StoreReviewManager.shared.delegate = self
-//
-//        // როგორც კი ციკლის მასივიდან ერთ-ერთს დაემთხვევა ამოაგდებს პოპაფს.
-//        StoreReviewManager.shared.increaseTargetCount()
-//
-//        return true
-//    }
-//}
-//
-//extension AppDelegate: StoreReviewManagerDelegate {
-//    // სამი არის რეკომენდირებული, რადგან სისტემა სამზე მეტჯერ არ აგდებს პოპაფს წელიწადში.
-//    // ამიტომ შორ-შორი რიცხვების მითითებაა რეკომენდირებული
-//    var cycles: [Int] {
-//        return [1, 100, 400]
-//    }
-//}

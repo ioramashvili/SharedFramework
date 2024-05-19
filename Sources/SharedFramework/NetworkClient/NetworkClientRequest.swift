@@ -180,6 +180,8 @@ open class NetworkClientRequest {
             do {
                 try response?.isStatus(code: 200)
                 var json: Any?
+                
+                DefaultNetworkErrorLogger.shared.log(responseData: data, response: response)
 
                 if parsingJson {
                     guard let _ = data else { throw NetworkClientError.dataIsEmpty }
@@ -195,13 +197,15 @@ open class NetworkClientRequest {
                 return
             } catch {
                 errorCode = error
+                DefaultNetworkErrorLogger.shared.log(error: error)
             }
 
             DispatchQueue.main.async {
                 complition(NetworkClientResponse<Any>(serverRequest: self, errorCode: error?.errorCode ?? errorCode))
             }
         }
-
+        
+        DefaultNetworkErrorLogger.shared.log(request: request)
         task.resume()
 
         return task
@@ -220,6 +224,8 @@ open class NetworkClientRequest {
                 try response?.isStatus(code: 200)
 
                 guard let data = data else { throw NetworkClientError.dataIsEmpty }
+                
+                DefaultNetworkErrorLogger.shared.log(responseData: data, response: response)
 
                 let output = try self.decoder.decode(T.self, from: data)
 
@@ -234,6 +240,7 @@ open class NetworkClientRequest {
                 return
             } catch {
                 errorCode = error
+                DefaultNetworkErrorLogger.shared.log(error: error)
             }
 
             let errorResponse = NetworkClientResponse<T>(serverRequest: self, errorCode: error?.errorCode ?? errorCode)
@@ -243,6 +250,7 @@ open class NetworkClientRequest {
             }
         }
 
+        DefaultNetworkErrorLogger.shared.log(request: request)
         task.resume()
 
         return task
