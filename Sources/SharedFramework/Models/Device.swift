@@ -62,6 +62,10 @@ final public class Device {
         case "iPhone15,5":                                     return .iPhone15Plus
         case "iPhone16,1":                                     return .iPhone15Pro
         case "iPhone16,2":                                     return .iPhone15ProMax
+        case "iPhone17,3":                                     return .iPhone16
+        case "iPhone17,4":                                     return .iPhone16Plus
+        case "iPhone17,1":                                     return .iPhone16Pro
+        case "iPhone17,2":                                     return .iPhone16ProMax
         case "iPad2,1", "iPad2,2", "iPad2,3", "iPad2,4":       return .iPad2
         case "iPad3,1", "iPad3,2", "iPad3,3":                  return .iPad3
         case "iPad3,4", "iPad3,5", "iPad3,6":                  return .iPad4
@@ -89,6 +93,7 @@ final public class Device {
         case "iPad8,11", "iPad8,12":                           return .iPadPro12_9_4
         case "iPad13,8", "iPad13,9", "iPad13,10", "iPad13,11": return .iPadPro12_9_5
         case "iPad14,5", "iPad14,6":                           return .iPadPro12_9_6
+        case "iPad16,5", "iPad16,6":                           return .iPadPro13
         case "AppleTV5,3":                                     return .appleTV
         case "AppleTV6,2":                                     return .appleTV4K
         case "i386", "x86_64":                                 return getDeviceName(for: ProcessInfo().environment["SIMULATOR_MODEL_IDENTIFIER"] ?? "")
@@ -136,6 +141,10 @@ public extension Device {
         case iPhone15Plus   = "iPhone 15 Plus"
         case iPhone15Pro    = "iPhone 15 Pro"
         case iPhone15ProMax = "iPhone 15 Pro Max"
+        case iPhone16       = "iPhone 16"
+        case iPhone16Plus   = "iPhone 16 Plus"
+        case iPhone16Pro    = "iPhone 16 Pro"
+        case iPhone16ProMax = "iPhone 16 Pro Max"
         
         case iPhoneSE       = "iPhone SE"
         case iPhoneSE_2     = "iPhone SE (2nd generation)"
@@ -171,6 +180,7 @@ public extension Device {
         case iPadPro12_9_4  = "iPad Pro (12.9-inch) (4th generation)"
         case iPadPro12_9_5  = "iPad Pro (12.9-inch) (5th generation)"
         case iPadPro12_9_6  = "iPad Pro (12.9-inch) (6th generation)"
+        case iPadPro13      = "iPad Pro (13-inch) (M4)"
         
         case appleTV        = "Apple TV"
         case appleTV4K      = "Apple TV 4K"
